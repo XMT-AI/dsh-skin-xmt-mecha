@@ -77,11 +77,11 @@
       "versions": [
         {
           "version": "1.0.0",
-          "publishTimestamp": 1793512573,
+          "publishTimestamp": 1793512604,
           "source": {
             "type": "git",
             "url": "https://github.com/XMT-AI/dsh-skin-xmt-mecha",
-            "commit": "b1720819f92cb9ff0253eee4821f109cf58a2a66"
+            "commit": "112d2340401b04511e72b672adee4a96e4781c1c"
           },
           "engines": {
             "dsh": ">=0.2.0-rc.1"
