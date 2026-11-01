@@ -24,7 +24,7 @@
 打开侧栏 **插件** 页，选安装，输入下面任一：
 
 - `dsh-skin-xmt-mecha` —— 已发布到 npm 时
-- `github:OWNER/dsh-skin-xmt-mecha` —— 直接从 GitHub 装，不需要 npm
+- `github:XMT-AI/dsh-skin-xmt-mecha` —— 直接从 GitHub 装，不需要 npm
 
 装一个 bundle 默认就会启用。如果你的 profile 不是热重载的，重启应用生效。
 
@@ -49,7 +49,7 @@ CLI 只是 `pnpm` 的透传，**只装依赖、不会把插件加进 profile 的
 从 GitHub 装同理：
 
 ```bash
-dsh plugin --profile <你的profile> add github:OWNER/dsh-skin-xmt-mecha
+dsh plugin --profile <你的profile> add github:XMT-AI/dsh-skin-xmt-mecha
 ```
 
 ### 3. 从插件市场索引安装
@@ -57,7 +57,7 @@ dsh plugin --profile <你的profile> add github:OWNER/dsh-skin-xmt-mecha
 DSH **没有集中的官方商店**：所谓「市场」是你自己填进去的一个 JSON 索引 URL，DSH 从它列插件并安装。如果你把 `market/index.json` 挂出去，把它的 raw 地址填进 **设置 → 插件 → 市场** 即可，例如
 
 ```
-https://raw.githubusercontent.com/OWNER/dsh-skin-xmt-mecha/main/market/index.json
+https://raw.githubusercontent.com/XMT-AI/dsh-skin-xmt-mecha/main/market/index.json
 ```
 
 市场服务本身是个可选 bundle；如果你的版本没有 Discover 页，用上面第 1 或第 2 种方式。
@@ -125,7 +125,7 @@ DSH 的设计是「插件自己的配置放在插件卡片上，设置页只放�
 
 ## 发布前
 
-把 `package.json` 里的 `OWNER` 占位符换成你的 GitHub 账号（`repository`、`homepage`、`author`），然后：
+`package.json` 里的 `repository`、`homepage`、`author` 已指向本仓库。发布：
 
 ```bash
 npm publish --access public

@@ -24,7 +24,7 @@ A skin plugin for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-har
 Open the **Plugins** page in the app sidebar, choose install, and enter one of:
 
 - `dsh-skin-xmt-mecha` — from npm, once published
-- `github:OWNER/dsh-skin-xmt-mecha` — straight from GitHub, no npm needed
+- `github:XMT-AI/dsh-skin-xmt-mecha` — straight from GitHub, no npm needed
 
 Installing a bundle enables it by default. Restart the app if your profile is not live-reloading.
 
@@ -49,7 +49,7 @@ The CLI is a thin `pnpm` passthrough, so it adds the dependency but does **not**
 GitHub install works the same way:
 
 ```bash
-dsh plugin --profile <your-profile> add github:OWNER/dsh-skin-xmt-mecha
+dsh plugin --profile <your-profile> add github:XMT-AI/dsh-skin-xmt-mecha
 ```
 
 ### 3. From a plugin market index
@@ -57,7 +57,7 @@ dsh plugin --profile <your-profile> add github:OWNER/dsh-skin-xmt-mecha
 DSH ships no central store: a "market" is any JSON index URL you add under **Settings → Plugins → Market**, and DSH lists and installs from it. If you host `market/index.json` (see below), add its raw URL — for example
 
 ```
-https://raw.githubusercontent.com/OWNER/dsh-skin-xmt-mecha/main/market/index.json
+https://raw.githubusercontent.com/XMT-AI/dsh-skin-xmt-mecha/main/market/index.json
 ```
 
 The market service is an optional bundle; if your build has no Discover tab, install as in option 1 or 2 instead.
@@ -127,7 +127,7 @@ above it turns the whole skin off.
 
 ## Publishing notes
 
-Before publishing, replace the `OWNER` placeholders in `package.json` (`repository`, `homepage`, `author`) with your GitHub handle, then:
+The `repository`, `homepage`, and `author` fields in `package.json` already point at this repo. To publish:
 
 ```bash
 npm publish --access public

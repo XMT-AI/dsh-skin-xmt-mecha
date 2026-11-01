@@ -47,9 +47,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OWNER/dsh-skin-xmt-mecha.git"
+    "url": "https://github.com/XMT-AI/dsh-skin-xmt-mecha.git"
   },
-  "homepage": "https://github.com/OWNER/dsh-skin-xmt-mecha#readme",
-  "author": "OWNER",
+  "homepage": "https://github.com/XMT-AI/dsh-skin-xmt-mecha#readme",
+  "author": "XMT-AI",
   "license": "SEE LICENSE IN LICENSE"
 }
