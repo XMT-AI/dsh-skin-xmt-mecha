@@ -53,6 +53,8 @@
         "zh": "开屏视频播完才进界面，之后整屏循环视频背景，组件层按 Apple 设计语言重做。"
       },
       "icon": "../icon.svg",
+      "author": "XMT-AI",
+      "homepage": "https://github.com/XMT-AI/dsh-skin-xmt-mecha#readme",
       "metadata": {
         "category": "skin",
         "keywords": [
@@ -75,9 +77,11 @@
       "versions": [
         {
           "version": "1.0.0",
-          "publishTimestamp": 1793507236,
+          "publishTimestamp": 1793512573,
           "source": {
-            "type": "npm"
+            "type": "git",
+            "url": "https://github.com/XMT-AI/dsh-skin-xmt-mecha",
+            "commit": "b1720819f92cb9ff0253eee4821f109cf58a2a66"
           },
           "engines": {
             "dsh": ">=0.2.0-rc.1"
