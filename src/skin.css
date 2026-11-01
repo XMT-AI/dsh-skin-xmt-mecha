@@ -1,0 +1,195 @@
+/**
+ * 数据哨兵 · L1 令牌层
+ *
+ * 设计目标：Apple 的系统设计语言 + 一点科技感。
+ *
+ * 取色来自 Apple 官方系统色（iOS/macOS 暗色模式）：
+ *   systemBlue  #0A84FF   systemCyan  #64D2FF   systemGreen #30D158
+ *   systemRed   #FF453A   systemOrange #FF9F0A  systemYellow #FFD60A
+ *   label       #FFFFFF / 60% / 30% / 18%
+ *   fill        120,120,128 的 36% / 24% / 16% / 12% / 8%
+ *   separator   84,84,88 的 65%
+ *
+ * 跟用户视频的关系：视频是冷钢蓝近黑，所以玻璃表面统一偏冷，
+ * 强调色用 systemBlue（不是霓虹），科技感靠 systemCyan 少量点缀。
+ *
+ * 规则：
+ *   - 颜色一律 8 位 hex（皮肤白名单不接受 color function）；
+ *   - 令牌写在 html[data-dsh-skin] 与 body 上：应用主题令牌定义在 body 上，
+ *     同特异性时后注入者胜，而主题样式在插件之后注入，所以用更高特异性
+ *     + !important 兜底；
+ *   - 表面保持半透明，让背景视频透上来。
+ */
+
+html[data-dsh-skin],
+html[data-dsh-skin] body {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  color-scheme: dark !important;
+
+  /* ——— 背景层 ——— */
+  --dsw-alias-bg-base: #0A0E141F !important;
+  --dsw-alias-bg-layer-1: #14171C99 !important;
+  --dsw-alias-bg-layer-2: #1C1F24B3 !important;
+  --dsw-alias-bg-layer-3: #24272ED9 !important;
+  --dsw-alias-bg-mask-1: #000000A6 !important;
+  --dsw-alias-bg-mask-2: #00000073 !important;
+  --dsw-alias-bg-mask-3: #0000004D !important;
+  --dsw-alias-bg-mask-drop: #00000080 !important;
+  --dsw-alias-bg-mask-photo: #000000A6 !important;
+  --dsw-alias-bg-module-platform: #1C1F24E6 !important;
+  --dsw-alias-bg-multi-select: #0A84FF33 !important;
+  --dsw-alias-bg-overlay: #0A0C10F2 !important;
+  --dsw-alias-bg-skeleton: #FFFFFF14 !important;
+
+  /* ——— 描边：Apple 的 separator ——— */
+  --dsw-alias-border-inverted: #FFFFFF !important;
+  --dsw-alias-border-inverted2: #1C1F24 !important;
+  --dsw-alias-border-l1: #FFFFFF1A !important;
+  --dsw-alias-border-l2: #FFFFFF24 !important;
+  --dsw-alias-border-l2-darkmode-thin: #FFFFFF1F !important;
+  --dsw-alias-border-l3: #FFFFFF33 !important;
+  --dsw-alias-border-l4: #FFFFFF47 !important;
+
+  /* ——— 品牌与按钮 ——— */
+  --dsw-alias-brand-primary: #0A84FF !important;
+  --dsw-alias-brand-primary-invert: #FFFFFF !important;
+  --dsw-alias-brand-text: #0A84FF !important;
+  --dsw-alias-button-contrast-fill: #0A84FF !important;
+  --dsw-alias-button-elevated-fill: #FFFFFF14 !important;
+  --dsw-alias-button-floating-fill: #1C1F24CC !important;
+  --dsw-alias-button-floating-hover: #2A2E36 !important;
+  --dsw-alias-button-ghost-active-border: #0A84FF59 !important;
+  --dsw-alias-button-ghost-active-fill: #0A84FF26 !important;
+  --dsw-alias-button-ghost-active-hover: #0A84FF33 !important;
+  --dsw-alias-button-info-fill: #64D2FF !important;
+  --dsw-alias-button-info-hover: #84DBFF !important;
+  --dsw-alias-button-primary-dimmed: #0A84FF73 !important;
+  --dsw-alias-button-primary-fill: #0A84FF !important;
+  --dsw-alias-button-primary-hover: #3D9BFF !important;
+  --dsw-alias-button-tool-bar-fill: #FFFFFF0F !important;
+  --dsw-alias-button-tool-bar-fill-invisible: #FFFFFF00 !important;
+  --dsw-alias-button-tool-bar-hover: #FFFFFF1F !important;
+
+  /* ——— 交互态 ——— */
+  --dsw-alias-interactive-bg-active: #0A84FF29 !important;
+  --dsw-alias-interactive-bg-hover: #FFFFFF14 !important;
+  --dsw-alias-interactive-bg-hover-accent: #0A84FF1F !important;
+  --dsw-alias-interactive-bg-hover-danger: #FF453A29 !important;
+  --dsw-alias-interactive-bg-hover-solid: #FFFFFF1F !important;
+
+  /* ——— 文字：Apple 的四级 label ——— */
+  --dsw-alias-label-caption: #FFFFFF33 !important;
+  --dsw-alias-label-dimmed: #FFFFFF24 !important;
+  --dsw-alias-label-primary: #FFFFFF !important;
+  --dsw-alias-label-primary-bluish: #64D2FF !important;
+  --dsw-alias-label-primary-dimmed: #FFFFFFB3 !important;
+  --dsw-alias-label-primary-foreground: #FFFFFF !important;
+  --dsw-alias-label-primary-inverted: #000000 !important;
+  --dsw-alias-label-secondary: #FFFFFF99 !important;
+  --dsw-alias-label-tertiary: #FFFFFF4D !important;
+
+  /* ——— Markdown ——— */
+  --dsw-alias-markdown-citation: #64D2FF !important;
+  --dsw-alias-markdown-code-block: #0D1014A6 !important;
+  --dsw-alias-markdown-code-block-banner: #0D1014 !important;
+  --dsw-alias-markdown-code-segment-selected: #0D1014F2 !important;
+  --dsw-alias-markdown-code-segment-unselected: #FFFFFF14 !important;
+  --dsw-alias-markdown-inline-code: #64D2FF1F !important;
+  --dsw-alias-markdown-placeholder: #FFFFFF4D !important;
+  --dsw-alias-markdown-tag: #0A84FF26 !important;
+
+  /* ——— 滚动条 ——— */
+  --dsw-alias-scrollbar-bg-l1: #FFFFFF14 !important;
+  --dsw-alias-scrollbar-bg-l2: #FFFFFF1F !important;
+  --dsw-alias-scrollbar-hover-l1: #FFFFFF33 !important;
+  --dsw-alias-scrollbar-hover-l2: #FFFFFF40 !important;
+
+  /* ——— 状态色 ——— */
+  --dsw-alias-state-business-primary: #0A84FF !important;
+  --dsw-alias-state-business-tertiary: #0A84FF26 !important;
+  --dsw-alias-state-danger-primary: #FF453A !important;
+  --dsw-alias-state-danger-tertiary: #FF453A29 !important;
+  --dsw-alias-state-error-primary: #FF453A !important;
+  --dsw-alias-state-error-secondary: #FF6961 !important;
+  --dsw-alias-state-success-primary: #30D158 !important;
+  --dsw-alias-state-success-secondary: #5CD974 !important;
+  --dsw-alias-state-success-tertiary: #30D15829 !important;
+  --dsw-alias-state-warn-label: #FFD60A !important;
+  --dsw-alias-state-warn-primary: #FF9F0A !important;
+  --dsw-alias-state-warn-secondary: #FFB340 !important;
+  --dsw-alias-state-warn-tertiary: #FF9F0A29 !important;
+
+  /* ——— 浮层 ——— */
+  --dsw-alias-toast-bg: #1C1F24F2 !important;
+  --dsw-alias-toast-fg: #FFFFFF !important;
+  --dsw-alias-tooltip-bg: #2C2C2EF5 !important;
+  --dsw-alias-tooltip-fg: #FFFFFF !important;
+
+  /* ——— 阴影：柔和分层，不用发光 ——— */
+  --dsw-alias-shadow-lv1: #00000026 !important;
+  --dsw-alias-shadow-lv2: #00000040 !important;
+  --dsw-alias-shadow-lv3: #00000066 !important;
+
+  /* ——— 部件专用 ——— */
+  --dsw-alias-specific-bubble: #1C1F24D9 !important;
+  --dsw-alias-specific-bubble-highlight: #2A2E36 !important;
+  --dsw-alias-specific-input-major: #FFFFFF14 !important;
+  --dsw-alias-specific-login-input: #FFFFFF14 !important;
+  --dsw-alias-specific-menu: #1C1F24F5 !important;
+  --dsw-alias-specific-selector: #1C1F24F2 !important;
+  --dsw-alias-specific-sidebar-fill: #0A0E1499 !important;
+  --dsw-alias-specific-sidebar-nav-item-active: #0A84FF29 !important;
+  --dsw-alias-specific-sidebar-nav-item-active-accent: #0A84FF !important;
+  --dsw-alias-specific-sidebar-nav-item-hover: #FFFFFF12 !important;
+  --dsw-alias-specific-tip: #0A84FF1F !important;
+
+  /* 旧名保留一份，部分组件仍在读 */
+  --dsw-specific-bubble: #1C1F24D9 !important;
+  --dsw-specific-bubble-highlight: #2A2E36 !important;
+  --dsw-specific-input-major: #FFFFFF14 !important;
+  --dsw-specific-login-input: #FFFFFF14 !important;
+  --dsw-specific-menu: #1C1F24F5 !important;
+  --dsw-specific-selector: #1C1F24F2 !important;
+  --dsw-specific-sidebar-fill: #0A0E1499 !important;
+  --dsw-specific-sidebar-nav-item-active: #0A84FF29 !important;
+  --dsw-specific-sidebar-nav-item-active-accent: #0A84FF !important;
+  --dsw-specific-sidebar-nav-item-hover: #FFFFFF12 !important;
+  --dsw-specific-tip: #0A84FF1F !important;
+
+  /* 字体：系统 UI 字体；等宽只留给代码与数值 */
+  --dsw-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI Variable Text', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei UI', system-ui, sans-serif !important;
+  --dsw-hovercard-bg: #1C1F24F7 !important;
+  --dsw-mask-blur: 20px !important;
+  --dsw-linear-gradient-think: linear-gradient(90deg, #64D2FF33 0%, #64D2FF14 100%) !important;
+  --dsw-linear-think-select: #64D2FF3D !important;
+  --dsw-shadow-lv1-blur: 8px !important;
+
+  /* ——— 本皮肤的局部变量 ——— */
+  --ds-ink: #FFFFFF !important;
+  --ds-ink-soft: #FFFFFFB3 !important;
+  --ds-ink-mute: #FFFFFF8C !important;
+  --ds-ink-faint: #FFFFFF5C !important;
+  --ds-ground: #05070A !important;
+  --ds-glass: #14171C99 !important;
+  --ds-glass-strong: #1C1F24E6 !important;
+  --ds-glass-weak: #0A0E1473 !important;
+  --ds-edge: #FFFFFF24 !important;
+  --ds-edge-soft: #FFFFFF1A !important;
+  --ds-edge-faint: #FFFFFF0F !important;
+  --ds-accent: #0A84FF !important;
+  --ds-accent-soft: #0A84FF33 !important;
+  --ds-accent-faint: #0A84FF1F !important;
+  --ds-accent-lift: #3D9BFF !important;
+  --ds-tech: #64D2FF !important;
+  --ds-warn: #FF9F0A !important;
+  --ds-danger: #FF453A !important;
+  --ds-radius-sm: 6px !important;
+  --ds-radius: 10px !important;
+  --ds-radius-lg: 14px !important;
+  --ds-mono: 'SF Mono', ui-monospace, 'Cascadia Mono', 'Cascadia Code', Menlo, Consolas, monospace !important;
+  /* 动效：Apple 的曲线（ease-out / 弹性入场） */
+  --ds-ease: cubic-bezier(0.32, 0.72, 0, 1) !important;
+  --ds-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  --ds-dur: 0.22s !important;
+}

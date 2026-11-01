@@ -1,0 +1,6 @@
+# XMT Mecha Skin — a browser-only skin bundle.
+# Both videos are inlined into the client bundle at build time, so the plugin
+# makes no network requests at runtime.
+- insert:
+    - id: ui-skin-xmt-mecha
+      name: 'dsh-skin-xmt-mecha'

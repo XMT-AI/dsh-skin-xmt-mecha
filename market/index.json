@@ -1,0 +1,89 @@
+{
+  "format": 1,
+  "title": {
+    "en": "XMT Mecha Skin — market",
+    "zh": "XMT 机甲皮肤 — 市场"
+  },
+  "description": {
+    "en": "A small index of DeepSeek Harness skins and themes.",
+    "zh": "一个 DSH 皮肤 / 主题的小索引。"
+  },
+  "metadata": {
+    "categories": {
+      "skin": {
+        "title": {
+          "en": "Skins & themes",
+          "zh": "皮肤与主题"
+        }
+      }
+    },
+    "labels": {
+      "animated": {
+        "title": {
+          "en": "Animated",
+          "zh": "动态"
+        }
+      },
+      "dark-mode": {
+        "title": {
+          "en": "Dark mode",
+          "zh": "暗色"
+        }
+      }
+    },
+    "sortKeys": {
+      "stars": {
+        "title": {
+          "en": "Stars",
+          "zh": "星标"
+        },
+        "order": "desc"
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-skin-xmt-mecha",
+      "title": {
+        "en": "XMT Mecha Skin",
+        "zh": "XMT 机甲皮肤（熊猫头机甲）"
+      },
+      "description": {
+        "en": "Gated splash video on boot, then a looping video backdrop, with an Apple-style dark component layer.",
+        "zh": "开屏视频播完才进界面，之后整屏循环视频背景，组件层按 Apple 设计语言重做。"
+      },
+      "icon": "../icon.svg",
+      "metadata": {
+        "category": "skin",
+        "keywords": [
+          "skin",
+          "theme",
+          "splash",
+          "video background",
+          "mecha",
+          "apple",
+          "dark"
+        ],
+        "labels": [
+          "animated",
+          "dark-mode"
+        ],
+        "sortKeys": {
+          "stars": 0
+        }
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1793507236,
+          "source": {
+            "type": "npm"
+          },
+          "engines": {
+            "dsh": ">=0.2.0-rc.1"
+          }
+        }
+      ]
+    }
+  ]
+}

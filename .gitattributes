@@ -1,0 +1,7 @@
+# Normalize line endings so a Windows checkout and a Linux/macOS checkout
+# produce the same bytes. Binary media is excluded explicitly.
+* text=auto eol=lf
+*.mp4 binary
+*.png binary
+*.jpg binary
+*.webp binary

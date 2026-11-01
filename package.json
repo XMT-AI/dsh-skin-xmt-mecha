@@ -1,0 +1,55 @@
+{
+  "name": "dsh-skin-xmt-mecha",
+  "version": "1.0.0",
+  "description": "XMT Mecha Skin — a gated splash video plus a looping video backdrop for DeepSeek Harness, with an Apple-style component layer (dark).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-skin",
+    "skin",
+    "theme",
+    "mecha",
+    "splash-screen",
+    "animated-background"
+  ],
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "index": "node scripts/make-market-index.mjs"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "LICENSE-ASSETS.md",
+    "DISCLAIMER.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/dsh-skin-xmt-mecha.git"
+  },
+  "homepage": "https://github.com/OWNER/dsh-skin-xmt-mecha#readme",
+  "author": "OWNER",
+  "license": "SEE LICENSE IN LICENSE"
+}
